@@ -63,6 +63,7 @@ public class WaterWaveView extends View {
 			moveSpeed = ta.getFloat(R.styleable.waterwaveview_waveHeight, 0.1f);
 			omega = ta.getFloat(R.styleable.waterwaveview_omega,60f);
 			waveHeight = ta.getFloat(R.styleable.waterwaveview_waveHeight,60f);
+			heightOffset = 100 - ta.getFloat(R.styleable.waterwaveview_heightOffset,10f);
 			ta.recycle();
 		}
 	}

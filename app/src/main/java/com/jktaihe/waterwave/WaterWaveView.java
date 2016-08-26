@@ -8,6 +8,7 @@ import android.graphics.Path;
 import android.graphics.Region;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.ViewTreeObserver;
 
 /**
  * @Description: 水波效果
@@ -71,6 +72,18 @@ public class WaterWaveView extends View {
 	private void init(Context context, AttributeSet attrs) {
 		parseStyle(context, attrs);
 		setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+
+		//增加组件绘制之前的监听
+		ViewTreeObserver vto = getViewTreeObserver();
+		vto.addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+			@Override
+			public boolean onPreDraw() {
+				height = getMeasuredHeight();
+				width = getMeasuredWidth();
+				initWaveParam();
+				return true;
+			}
+		});
 	}
 
 	@Override
@@ -142,14 +155,6 @@ public class WaterWaveView extends View {
 		firstWavePath.lineTo(width, 0);
 		firstWavePath.lineTo(width, height);
 		return firstWavePath;
-	}
-
-
-
-	@Override
-	public void onWindowFocusChanged(boolean hasWindowFocus) {
-		initWaveParam();
-		super.onWindowFocusChanged(hasWindowFocus);
 	}
 
 	private void initWaveParam() {

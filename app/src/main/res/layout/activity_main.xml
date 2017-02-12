@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.jktaihe.waterwave.WaterWaveView
+    <com.jktaihe.wwview.WaterWaveView
         android:id="@+id/wwv"
         android:layout_width="200dp"
         android:layout_height="200dp"

@@ -1,4 +1,4 @@
-package com.jktaihe.waterwave;
+package com.jktaihe.wwview;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -42,9 +42,7 @@ public class WaterWaveView extends View {
 
 	private Thread thread = null;
 
-	public WaterWaveView(Context context) {
-		super(context);
-	}
+	private Path mPath;
 
 	public WaterWaveView(Context context, AttributeSet attrs) {
 		super(context, attrs);
@@ -66,6 +64,7 @@ public class WaterWaveView extends View {
 			waveHeight = ta.getFloat(R.styleable.waterwaveview_waveHeight,60f);
 			heightOffset = 100 - ta.getFloat(R.styleable.waterwaveview_heightOffset,10f);
 			ta.recycle();
+
 		}
 	}
 
@@ -95,8 +94,13 @@ public class WaterWaveView extends View {
 	}
 
 	private void path(Canvas canvas) {
-		Path mPath = new Path();
-		mPath.reset();
+
+		if (mPath == null){
+			mPath = new Path();
+		}else {
+			mPath.reset();
+		}
+
 		mPath.addCircle(radius / 2, radius / 2, radius / 2-10, Path.Direction.CCW);
 		canvas.clipPath(mPath, Region.Op.REPLACE);
 	}
@@ -105,8 +109,10 @@ public class WaterWaveView extends View {
 		// 绘制区域2的路径
 		if (secondWavePath == null) {
 			secondWavePath = new Path();
+		}else {
+			secondWavePath.reset();
 		}
-		secondWavePath.reset();
+
 		secondWavePath.moveTo(0, height);// 移动到左下角的点
 		for (float x = 0; x <= width; x += X_STEP) {
 			float y = (float) (waveHeight
@@ -144,8 +150,10 @@ public class WaterWaveView extends View {
 		// 绘制区域1的路径
 		if (firstWavePath == null) {
 			firstWavePath = new Path();
+		}else {
+			firstWavePath.reset();
 		}
-		firstWavePath.reset();
+
 		firstWavePath.moveTo(0, height);// 移动到左下角的点
 		for (float x = 0; x <= width; x += X_STEP) {
 			float y = (float) (waveHeight * Math.sin(omega * x + moveWave) + waveHeight)

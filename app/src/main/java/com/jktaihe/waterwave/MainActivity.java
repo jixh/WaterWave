@@ -3,6 +3,8 @@ package com.jktaihe.waterwave;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import com.jktaihe.wwview.WaterWaveView;
+
 public class MainActivity extends AppCompatActivity {
 
     WaterWaveView waterWaveProgress;

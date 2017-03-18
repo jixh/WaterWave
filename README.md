@@ -14,10 +14,9 @@ WaterWave
    
    ``` 
 
-
 2) xml中使用
 
-
+``` 
       <com.jktaihe.wwview.WaterWaveView
             android:id="@+id/wwv"
             android:layout_width="200dp"
@@ -27,14 +26,14 @@ WaterWave
             app:firstColor="#773F51B5"
             app:secondColor="#aa3F51B5"
             />
-
+``` 
 
 
 3) 绑定生命周期
 
 
 
-
+``` 
     @Override
     protected void onResume() {
         super.onResume();
@@ -47,3 +46,4 @@ WaterWave
         waterWaveProgress.stop();
     }
      
+``` 

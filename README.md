@@ -7,20 +7,16 @@ WaterWave
 使用方式
 --
 1) 导入包
-
-,,,
-   
+  
    ```gradle
    
       compile 'com.jktaihe:water-wave:1.0.0'
    
    ``` 
 
-,,,
 
 2) xml中使用
 
-,,,html
 
       <com.jktaihe.wwview.WaterWaveView
             android:id="@+id/wwv"
@@ -32,11 +28,11 @@ WaterWave
             app:secondColor="#aa3F51B5"
             />
 
-,,,
+
 
 3) 绑定生命周期
 
-,,,java
+
 
 
     @Override
@@ -51,5 +47,3 @@ WaterWave
         waterWaveProgress.stop();
     }
      
-
-,,,

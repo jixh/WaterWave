@@ -7,7 +7,7 @@ import com.jktaihe.wwview.WaterWaveView;
 
 public class MainActivity extends AppCompatActivity {
 
-    WaterWaveView waterWaveProgress;
+    private WaterWaveView waterWaveProgress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
         initWaveProgress();
     }
 
-    public void initWaveProgress() {
+    private void initWaveProgress() {
         waterWaveProgress = (WaterWaveView) findViewById(R.id.wwv);
     }
 

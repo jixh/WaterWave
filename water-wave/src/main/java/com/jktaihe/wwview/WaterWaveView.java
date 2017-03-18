@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewTreeObserver;
 
 /**
- * @Description: 水波效果
+ * 水波效果
  */
 public class WaterWaveView extends View {
 
@@ -38,7 +38,7 @@ public class WaterWaveView extends View {
 
 	private static float radius = 0;
 
-	public boolean isOnDraw = true;
+	private boolean isOnDraw = true;
 
 	private Thread thread = null;
 
@@ -90,7 +90,7 @@ public class WaterWaveView extends View {
 		super.onDraw(canvas);
 		path(canvas);
 		canvas.drawPath(getSecondWavePath(), getSecondLayerPaint());// 绘制第二层
-		canvas.drawPath(getFristWavePath(), getFristLayerPaint());// 绘制第一层
+		canvas.drawPath(getFirstWavePath(), getFirstLayerPaint());// 绘制第一层
 	}
 
 	private void path(Canvas canvas) {
@@ -135,7 +135,7 @@ public class WaterWaveView extends View {
 		return secondPaint;
 	}
 
-	private Paint getFristLayerPaint() {
+	private Paint getFirstLayerPaint() {
 		//  获取第一层的Paint，主要是颜色
 		if (firstPaint == null) {
 			firstPaint = new Paint();
@@ -146,7 +146,7 @@ public class WaterWaveView extends View {
 		return firstPaint;
 	}
 
-	private Path getFristWavePath() {
+	private Path getFirstWavePath() {
 		// 绘制区域1的路径
 		if (firstWavePath == null) {
 			firstWavePath = new Path();
@@ -188,7 +188,7 @@ public class WaterWaveView extends View {
 	/**
 	 * 设置omega
 	 * 
-	 * @param omega
+	 * @param omega 波形的周期
 	 */
 	public void setOmega(float omega) {
 		this.omega = omega;
@@ -197,7 +197,7 @@ public class WaterWaveView extends View {
 	/**
 	 * 设置波形的高度
 	 * 
-	 * @param waveHeight
+	 * @param waveHeight 波形的高度
 	 */
 	public void setWaveHeight(double waveHeight) {
 		this.waveHeight = waveHeight;
@@ -206,7 +206,7 @@ public class WaterWaveView extends View {
 	/**
 	 * 设置波形的移动速度
 	 * 
-	 * @param moveSpeed
+	 * @param moveSpeed 波形的移动速度
 	 */
 	public void setMoveSpeed(float moveSpeed) {
 		this.moveSpeed = moveSpeed;
@@ -215,7 +215,7 @@ public class WaterWaveView extends View {
 	/**
 	 * 设置第一层颜色
 	 * 
-	 * @param firstColor
+	 * @param firstColor 颜色
 	 */
 	public void setFirstColor(int firstColor) {
 		this.firstColor = firstColor;
@@ -224,7 +224,7 @@ public class WaterWaveView extends View {
 	/**
 	 * 设置第二层颜色
 	 * 
-	 * @param secondColor
+	 * @param secondColor 颜色
 	 */
 	public void setSecondColor(int secondColor) {
 		this.secondColor = secondColor;
@@ -233,7 +233,7 @@ public class WaterWaveView extends View {
 	/**
 	 * 参考值63
 	 * 
-	 * @param progress
+	 * @param progress 水波进度
 	 */
 	public void setMoveSpeedByProgress(int progress) {
 		if (progress >= 0 && progress <= 100) {
@@ -245,7 +245,7 @@ public class WaterWaveView extends View {
 	/**
 	 * 参考值18
 	 * 
-	 * @param progress
+	 * @param progress 进度
 	 */
 	public void setOmegaByProgress(int progress) {
 		if (progress >= 0 && progress <= 100) {
@@ -255,9 +255,9 @@ public class WaterWaveView extends View {
 	}
 
 	/**
-	 * 参考范围0-10
+	 * 参考范围0-100
 	 * 
-	 * @param progress
+	 * @param progress 水波范围
 	 */
 	public void setWaveHeightByProgress(int progress) {
 		if (progress >= 0 && progress <= 100) {
@@ -274,7 +274,7 @@ public class WaterWaveView extends View {
 	}
 
 
-	public class MyRunnable implements Runnable {
+	private class MyRunnable implements Runnable {
 			@Override
 			public void run() {
 				while (isOnDraw) {

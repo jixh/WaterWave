@@ -17,11 +17,16 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    lintOptions{
+        checkReleaseBuilds false
+        abortOnError false
+    }
 }
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
-    compile project(':wwview')
+    compile project(':water-wave')
     compile 'com.android.support:appcompat-v7:25.1.1'
 }

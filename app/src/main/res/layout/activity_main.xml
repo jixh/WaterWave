@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/girl"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.jktaihe.wwview.WaterWaveView
@@ -9,7 +10,9 @@
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_centerInParent="true"
-        app:heightOffset="20"
+        app:heightOffset="60"
+        app:firstColor="#773F51B5"
+        app:secondColor="#aa3F51B5"
         />
 
 </RelativeLayout>
